@@ -1,13 +1,9 @@
 #!/bin/bash
 
 # gcc -c -ggdb -fno-builtin -nostdlib -fno-stack-protector ./src/entry.c ./src/malloc.c ./src/stdio.c ./src/string.c ./src/printf.c
-
 # ar -rs rcrt.a malloc.o printf.o stdio.o string.o
-
 # gcc -c -ggdb -fno-builtin -nostdlib -fno-stack-protector ./tests/test.c
-
 # ld -static -e rcrt_entry entry.o test.o rcrt.a -o test
-
 # ls -l test
 
 gcc -c -fno-builtin -nostdlib -fno-stack-protector ./src/entry.c ./src/malloc.c ./src/stdio.c ./src/string.c ./src/printf.c ./src/atexit.c
@@ -17,6 +13,14 @@ g++ -c -nostdinc++ -fno-rtti -fno-exceptions -fno-builtin -nostdlib -fno-stack-p
 ar -rs rcrt.a malloc.o printf.o stdio.o string.o ctors.o atexit.o iostream.o new_delete.o sysdep.o
 
 g++ -c -nostdinc++ -fno-rtti -fno-exceptions -fno-builtin -nostdlib -fno-stack-protector ./tests/test.cpp
+
+if [ ! -d lib ]; then
+    mkdir lib
+fi
+
+if [ ! -d bin ]; then
+    mkdir bin
+fi
 
 mv *.o *.a ./lib/
 
