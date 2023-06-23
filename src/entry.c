@@ -70,6 +70,8 @@ void rcrt_entry(void)
         crt_fatal_error("IO initialize failed!");
     }
 
+    do_global_ctors();
+
     ret = main(argc, argv);
 
     exit(ret);
@@ -77,6 +79,8 @@ void rcrt_entry(void)
 
 void exit(int exitCode)
 {
+    rcrt_call_exit_routine();
+
 #ifdef WIN32
     ExitProcess(exitCode);
 #else
