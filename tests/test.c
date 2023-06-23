@@ -10,7 +10,7 @@ int main(int argc, char** argv)
         strcpy(v[i], argv[i]);
     }
 
-    FILE* fp = fopen("__test.txt", "w");
+    FILE* fp = fopen(".test.txt", "w");
     for(int i = 0; i < argc; ++i)
     {
         int len = strlen(v[i]);
@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     }
     fclose(fp);
 
-    fp = fopen("__test.txt", "r");
+    fp = fopen(".test.txt", "r");
     char lenstr[16] = {0};
     for(int i = 0; i < argc; ++i)
     {
