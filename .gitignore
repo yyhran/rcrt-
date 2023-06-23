@@ -1,0 +1,6 @@
+*.o
+*.a
+./bin/*
+./lib/*.o
+./lib/*.a
+.test.txt
