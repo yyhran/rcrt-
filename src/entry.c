@@ -84,9 +84,9 @@ void exit(int exitCode)
 #ifdef WIN32
     ExitProcess(exitCode);
 #else
-    asm("movl %0, %%ebx \n\t"
-        "movl $1, %%eax \n\t"
-        "int $0x80      \n\t"
+    asm("mov   %0, %%edi \n\t"
+        "movq $60, %%rax \n\t"
+        "syscall         \n\t"
         "hlt            \n\t"
         :: "m"(exitCode)
         );

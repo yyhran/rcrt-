@@ -9,26 +9,30 @@ extern "C" {
 class Foo
 {
 public:
-    Foo()
+    Foo(int data)
     {
-        rstd::cout << "Foo()" << rstd::endl;
+        m_val = data;
+        rstd::cout << "Foo(" << m_val << ")" << rstd::endl;
     }
     ~Foo()
     {
-        rstd::cout << "~Foo()" << rstd::endl;
+        rstd::cout << "~Foo(" << m_val << ")" << rstd::endl;
     }
 
     void test()
     {
-        rstd::cout << "Foo::test()" << rstd::endl;
+        rstd::cout << "Foo::test(" << m_val << ")" << rstd::endl;
     }
+
+private:
+    int m_val;
 };
 
-
-Foo f;
+Foo f(114);
 
 int main(int argc, char** argv)
 {
+    rstd::cout << "gcc version: " << __GNUC__ << "." <<  __GNUC_MINOR__ << "." << __GNUC_PATCHLEVEL__ << rstd::endl;
     char** v = (char**)malloc(argc * sizeof(char*));
     char lenstr[16] = {0};
 
@@ -72,6 +76,10 @@ int main(int argc, char** argv)
     fclose(fp);
 
     println("tesing cpp");
+
+    f.test();
+    Foo g(233);
+    g.test();
 
     rstd::string* msg = new rstd::string("hello world!");
     rstd::cout << *msg << rstd::endl;

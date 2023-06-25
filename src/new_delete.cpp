@@ -2,8 +2,6 @@
 extern "C" void* malloc(unsigned int);
 extern "C" void free(void*);
 
-typedef unsigned int size_t;
-
 void* operator new(unsigned long size)
 {
     return malloc(size);
