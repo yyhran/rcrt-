@@ -12,7 +12,7 @@ class string
 {
     unsigned m_len;
     char* m_pbuf;
-    
+
 public:
     explicit string(const char* str)
         : m_len(0)

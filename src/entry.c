@@ -52,10 +52,10 @@ void rcrt_entry(void)
 #else
     int argc = 0;
     char** argv = NULL;
-    // char* ebp_reg = NULL;
-    register char* ebp_reg asm("ebp");
+    char* ebp_reg = NULL;
+    // register char* ebp_reg asm("ebp");
 
-    // asm("movl %%ebp, %0 \n":"=r"(ebp_reg));
+    asm("movq %%rbp, %0":"=r"(ebp_reg));
     argc = *(int*)(ebp_reg + sizeof(ebp_reg));
     argv = (char**)(ebp_reg + sizeof(ebp_reg) * 2);
 #endif
@@ -87,7 +87,7 @@ void exit(int exitCode)
     asm("mov   %0, %%edi \n\t"
         "movq $60, %%rax \n\t"
         "syscall         \n\t"
-        "hlt            \n\t"
+        "hlt             \n\t"
         :: "m"(exitCode)
         );
 #endif

@@ -57,7 +57,7 @@ void rcrt_call_exit_routine();
 // atexit
 typedef void (*atexit_func_t)(void);
 int atexit(atexit_func_t func);
-    
+
 #ifdef __cplusepluse
 }
 #endif

@@ -13,7 +13,7 @@ int fputc(int c, FILE* stream)
 int fputs(const char* str, FILE* stream)
 {
     int len = strlen(str);
-    
+
     if(fwrite(str, len, 1, stream) != len)
     {
         return EOF;
@@ -131,7 +131,7 @@ int print(const char*str)
 
 int println(const char* str)
 {
-    int ret = 0; 
+    int ret = 0;
     ret = fputs(str, stdout);
     ret += fputc('\n', stdout);
     return ret;

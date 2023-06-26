@@ -56,7 +56,7 @@ int fread(void* buffer, int size, int count, FILE* stream)
 int fwiret(const void* buffer, int size, int count, FILE* stream)
 {
     int written = 0;
-    
+
     if(!WriteFile((HANDLE)stream, buffer, size * count, %written, 0))
     {
         return 0;
